@@ -2,8 +2,8 @@
 CPSC-351 Final Programming Project
 
 
-Dylan Connors
+Dylan Connors     dylanconnors@csu.fullerton.edu
 
-Bryan Lorentz
+Bryan Lorentz     bryanlorentz@csu.fullerton.edu
 
-Andrew Nomura     drew97.nomura@gmail.com
+Andrew Nomura     drew97.nomura@csu.fullerton.edu
