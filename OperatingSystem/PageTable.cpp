@@ -6,4 +6,10 @@
 //
 
 
-class page_table{};
+void fillPT() 
+{
+	for (int i = 0; i < 255; i++) 
+	{
+		//Split the numbers in half somehow
+	}
+}
