@@ -7,4 +7,10 @@
 
 #include <iostream>
 
+class Word{
+public:
+    uint32_t() : int;
+    value_ : uint32_t();
+    
+};
 
