@@ -7,13 +7,15 @@
 
 #include <iostream>
 
-template<typename T>
 class Ram{
 public:
     Ram& instance();
-    Ram& operator=();
+    Ram& operator=(Ram& r){
+        Ram ram;
+        ram = this->ram + r.ram;
+    }
     Ram()
-    T read(void);
+    read(void);
 status:array<Status, FRAM_SIZE>
 private:
     Ram()
@@ -23,3 +25,5 @@ private:
     dirty:bool
     };
 };
+
+
