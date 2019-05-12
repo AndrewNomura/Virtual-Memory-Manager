@@ -44,19 +44,31 @@ void PageTable::fillPT(){
 
 void PageTable::readPT(int logicalAddress, MemoryManager mm){
     unsigned int page = (logicalAddress & 0xFF00) >> 8;
-    //unsigned int offset = (logicalAddress & 0xFF);
-    
+    unsigned int offset = (logicalAddress & 0xFF);
     
     
     //test if page number is valid
     if (table[page][1] == 0){   //0 means page number is invalid
         //throw page fault
-        mm.makeValid(table, page);
+        int frame_ = mm.makeValid(table, page); //should get page frame from function
+        if ((frame_ != -1) && (frame_ != -2)){ // -2 means the ffl is full
+            table[page][1] = 1;
+            table[page][0] = page;
+            char bkdata = 't'; // char bkdata = BK[frame_];
+            RAM[frame_][offset] = bkdata;
+            
+        }
+        if (frame_ == -2)
+        {
+            
+        }
+        //if freeFrameVector is too big then use replacement algorithm
     }
-    else{                       //page number is valid
-        table[page][1] = 1;     //make page number vaild
+    else{                       //page number is already valid
+        
     }
-     
+
+    
 }
  
 
