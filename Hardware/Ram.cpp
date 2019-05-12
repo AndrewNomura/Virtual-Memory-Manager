@@ -6,6 +6,11 @@
 //
 
 #include <iostream>
+struct Status{
+public:
+    accessed:bool
+    dirty:bool
+};
 
 class Ram{
 public:
@@ -16,14 +21,10 @@ public:
     }
     Ram()
     read(void);
-status:array<Status, FRAM_SIZE>
+status:array<Status, FRAME_SIZE>
 private:
-    Ram()
-    struct Status{
-    public:
-    accessed:bool
-    dirty:bool
-    };
+    RAM[256][256];  //RAM[frame #][offset]
+
 };
 
 
