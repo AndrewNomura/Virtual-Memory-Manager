@@ -10,7 +10,7 @@
 class Word{
 public:
     uint32_t() : int;
-    value_ : uint32_t();
+    //value_ : uint32_t();
     
 };
 
