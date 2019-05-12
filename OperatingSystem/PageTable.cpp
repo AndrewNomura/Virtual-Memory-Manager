@@ -47,10 +47,10 @@ void PageTable::readPT(int logicalAddress, MemoryManager mm){
     //test if page number is valid
     if (table[page][1] == 0){   //0 means page number is invalid
         //throw page fault
-        mm.makeValid();
+        mm.makeValid(table, page);
     }
     else{                       //page number is valid
-        
+        table[page][1] = 1;     //make page number vaild
     }
      
 }
