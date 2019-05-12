@@ -7,10 +7,10 @@
 #include <vector>
 using namespace std;
 
-
 class MemoryManager{
 public:
-    void makeValid();
+    int page;
+    void makeValid(int table[256][2], int page);
     void makeVector();
     void page_in(); //select frame number; FCFS
     
@@ -23,8 +23,11 @@ void MemoryManager::makeVector(){            //vector of empty frames
     }
 }
 
-void MemoryManager::makeValid(){
+void MemoryManager::makeValid(int table[256][2], int page){
+    
     //frame finder
+    table[page][1] = 1;
+
     for (int i = 0; i < 256; i++){
         if (frameVector[i] == 0){
             //RAM[frame #] = read(page)
