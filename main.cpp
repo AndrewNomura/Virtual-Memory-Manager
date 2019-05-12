@@ -71,7 +71,7 @@ using namespace std;
 
 
 int main(int argc, const char * argv[]) {
-    
+    int table[256][2];      //page table
     //create all objects 
     PageTable myPageTable;
     MemoryManagementUnit MMU;
@@ -81,7 +81,7 @@ int main(int argc, const char * argv[]) {
     myPageTable.fillPT();
     
     mm.makeVector();
-    mm.makeValid();
+    
     
     
     int logicalAddress;
@@ -96,21 +96,19 @@ int main(int argc, const char * argv[]) {
     
     
     while (file >> logicalAddress){
-        //cout << logicalAddress << "\n";
+        cout << logicalAddress << "\n";
         unsigned int page = (logicalAddress & 0xFF00) >> 8;
         unsigned int offset = (logicalAddress & 0xFF);
         
         cout << page << "\t" << offset << "\n";
         //v.push_back(logicalAddress);
+        mm.makeValid(table, page);
     }
      
     
     file.close();
     //we now have a list of all addresses
-    
 
-    
-    
     
     myPageTable.outputPT();
     
