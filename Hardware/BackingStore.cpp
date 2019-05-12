@@ -6,6 +6,8 @@
 //
 
 #include <iostream>
+#include <fstream>
+#include <string>
 
 class BackingStore{
 public:
@@ -15,3 +17,8 @@ public:
     BackingStore& operator=();
     void read();
 };
+
+void BackingStore::read(int logicalAddress, PageTable myPageTable, int data){
+    frame = PT(page).frame;
+    RAM[frame][offset];
+}
