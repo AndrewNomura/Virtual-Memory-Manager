@@ -9,6 +9,10 @@
 //#include "Hardware/Address.hpp"
 #include "MemoryManager.cpp"
 
+#pragma once
+
+
+
 using namespace std;
 
 class PageTable
