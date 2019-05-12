@@ -23,6 +23,7 @@
 
 //#include "OperatingSystem/MemoryManager.hpp"
 #include "OperatingSystem/PageTable.cpp"
+#include "Hardware/Word.cpp"
 
 /*
 namespace Hardware{
@@ -72,11 +73,14 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     int table[256][2];      //page table
+    Word page;
+    Word offset;
     //create all objects 
     PageTable myPageTable;
     MemoryManagementUnit MMU;
     MemoryManager mm;
     vector<int> v;
+    char data;
     
     myPageTable.fillPT();
     
@@ -84,7 +88,7 @@ int main(int argc, const char * argv[]) {
     
     
     
-    int logicalAddress;
+    Word logicalAddress;
     ifstream file;
     
     file.open("/Users/andrewnomura/Documents/CSUF/SPRING 2019/CPSC-351 Operating Systems/Final Programing Project/CPSC 351 Final Programming Project/CPSC 351 Final Programming Project/addresses.txt");
@@ -95,14 +99,15 @@ int main(int argc, const char * argv[]) {
     }
     
     
-    while (file >> logicalAddress){
-        cout << logicalAddress << "\n";
-        unsigned int page = (logicalAddress & 0xFF00) >> 8;
-        unsigned int offset = (logicalAddress & 0xFF);
+    while (file >> logicalAddress.uint32_t){
+        //cout << logicalAddress << "\n";
+        page.uint32_t = (logicalAddress.uint32_t & 0xFF00) >> 8;
+        offset.uint32_t = (logicalAddress.uint32_t & 0xFF);
         
-        cout << page << "\t" << offset << "\n";
+        //cout << page << "\t" << offset << "\n";
         //v.push_back(logicalAddress);
-        mm.makeValid(table, page);
+        mm.makeValid(table, page.uint32_t);
+        MMU.read(logicalAddress, myPageTable, data);
     }
      
     
@@ -110,9 +115,8 @@ int main(int argc, const char * argv[]) {
     //we now have a list of all addresses
 
     
-    myPageTable.outputPT();
-    
-
+    //myPageTable.outputPT();
+    myPageTable.outputRAM();
     
     
  
